@@ -22,7 +22,6 @@ app.use(bodyParser.json());
   app.use(express.static('public'));
 
   // morgan
-  const express = require('express'),
   morgan = require('morgan');
   app.use(morgan('common'));
 
@@ -38,19 +37,29 @@ let users = [
   {
     id: 1,
     name: "Bill",
-    favoriteMovies: []
+    favoriteMovies: ["Pulp Fiction"]
   },
   {
     id: 2,
     name: "Ben",
-    favoriteMovies: []
+    favoriteMovies: ["Blade Runner"]
+  },
+  {
+    id: 2,
+    name: "Bosco",
+    favoriteMovies: ["The Grand Budapest Hotel"]
+  },
+  {
+    id: 2,
+    name: "Bob",
+    favoriteMovies: ["Memento"]
   },
 ]
 
-let favoriteMovies = [
+let movies = [
   {
     "Title": "Blade Runner",
-    "Description": "",
+    "Description": "A blade runner must pursue and terminate four replicants who stole a sapceship and have returned to Earth to find their creator.",
     "Genre": {
       "Name": "Neo-noir" 
     },
@@ -60,7 +69,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "Whiplash",
-    "Description": "",
+    "Description": "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
     "Genre": {
       "Name": "Drama" 
     },
@@ -70,7 +79,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "The Grand Budapest Hotel",
-    "Description": "",
+    "Description": "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
     "Genre": {
       "Name": "Comedy" 
     },
@@ -80,7 +89,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "The Fellowship of the Ring",
-    "Description": "",
+    "Description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
     "Genre": {
       "Name": "Adventure" 
     },
@@ -90,7 +99,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "Pulp Fiction",
-    "Description": "",
+    "Description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     "Genre": {
       "Name": "Crime" 
     },
@@ -100,7 +109,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "Interstellar",
-    "Description": "",
+    "Description": "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.",
     "Genre": {
       "Name": "Sci-fi" 
     },
@@ -110,7 +119,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "Alien",
-    "Description": "",
+    "Description": "The crew of a commercial spacecraft encounters a deadly lifeform after investigating a mysterious transmission of unknown origin.",
     "Genre": {
       "Name": "Horror" 
     },
@@ -120,7 +129,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "Raiders of the Lost Ark",
-    "Description": "",
+    "Description": "In 1936, archaeologist and adventurer Indiana Jones is hired by the U.S. government to find the Ark of the Covenant before the Nazis can obtain its awesome powers.",
     "Genre": {
       "Name": "Adventure" 
     },
@@ -130,7 +139,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "Apocalypse Now",
-    "Description": "",
+    "Description": "A U.S. Army officer serving in Vietnam is tasked with assassinating a renegade Special Forces Colonel who sees himself as a god.",
     "Genre": {
       "Name": "Drama" 
     },
@@ -140,7 +149,7 @@ let favoriteMovies = [
   }, 
   {
     "Title": "Memento",
-    "Description": "",
+    "Description": "A man with short-term memory loss attempts to track down his wife's murderer.",
     "Genre": {
       "Name": "Mystery" 
     },
