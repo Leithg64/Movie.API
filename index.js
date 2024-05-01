@@ -1,37 +1,10 @@
 const express = require('express'),
+  morgan = require('morgan'),
   app = express(),
   bodyParser = require('body-parser'),
   uuid = require('uuid');
 
-app.use(bodyParser.json());
-
-  // GET requests
-  app.get('/', (req, res) => {
-    res.send('View my top 10 favorite movies');
-  });
-  
-  app.get('/documentation', (req, res) => {                  
-    res.sendFile('public/documentation.html', { root: __dirname });
-  });
-  
-  app.get('/movies', (req, res) => {
-    res.json(topFilms);
-  });
-
-  //returns static page
-  app.use(express.static('public'));
-
-  // morgan
-  morgan = require('morgan');
-  app.use(morgan('common'));
-
-  
-  // error handling
-  app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
-  
-});
+  app.use(bodyParser.json());
 
 let users = [
   {
@@ -61,7 +34,7 @@ let movies = [
     "Title": "Blade Runner",
     "Description": "A blade runner must pursue and terminate four replicants who stole a sapceship and have returned to Earth to find their creator.",
     "Genre": {
-      "Name": "Neo-noir" 
+      "Name": "Sci-fi" 
     },
     "Director": {
       "Name": "Riddley Scott"
@@ -158,6 +131,34 @@ let movies = [
     }
   } 
 ];
+
+// GET requests
+ app.get('/', (req, res) => {
+  res.send('View my top 10 favorite movies');
+});
+
+app.get('/documentation', (req, res) => {                  
+  res.sendFile('public/documentation.html', { root: __dirname });
+});
+
+app.get('/movies', (req, res) => {
+  res.json(movies);
+});
+
+//returns static page
+app.use(express.static('public'));
+
+// morgan
+morgan = require('morgan');
+app.use(morgan('common'));
+
+
+// error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+
+});
 
 //CREATE
 app.post('/user', (req, res) => {
