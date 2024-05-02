@@ -10,7 +10,7 @@ let users = [
   {
     id: 1,
     name: "Bill",
-    favoriteMovies: ["Pulp Fiction"]
+    favoriteMovies: []
   },
   {
     id: 2,
@@ -18,12 +18,12 @@ let users = [
     favoriteMovies: ["Blade Runner"]
   },
   {
-    id: 2,
+    id: 3,
     name: "Bosco",
     favoriteMovies: ["The Grand Budapest Hotel"]
   },
   {
-    id: 2,
+    id: 4,
     name: "Bob",
     favoriteMovies: ["Memento"]
   },
@@ -149,7 +149,6 @@ app.get('/movies', (req, res) => {
 app.use(express.static('public'));
 
 // morgan
-morgan = require('morgan');
 app.use(morgan('common'));
 
 
@@ -161,7 +160,7 @@ app.use((err, req, res, next) => {
 });
 
 //CREATE
-app.post('/user', (req, res) => {
+app.post('/users', (req, res) => {
   const newUser = req.body;
 
   if (newUser.name) {
@@ -175,14 +174,14 @@ app.post('/user', (req, res) => {
 })
 
 //UPDATE
-app.put('/user/:id', (req, res) => {
+app.put('/users/:id', (req, res) => {
   const { id } = req.params;
   const updatedUser = req.body;
   
   let user = users.find( user => user.id == id );
 
   if (user) {
-    user.name = updateUser.name;
+    user.name = updatedUser.name;
     res.status(200).json(user);
   } else {
     res.status(400).send('No such user')
@@ -191,8 +190,8 @@ app.put('/user/:id', (req, res) => {
 })
 
 //CREATE
-app.post('/user/:id/:movieTitle', (req, res) => {
-  const { id, MovieTitle } = req.params;
+app.post('/users/:id/:movieTitle', (req, res) => {
+  const { id, movieTitle } = req.params;
   
   let user = users.find( user => user.id == id );
 
@@ -206,8 +205,8 @@ app.post('/user/:id/:movieTitle', (req, res) => {
 })
 
 //DELETE
-app.delete('/user/:id/:movieTitle', (req, res) => {
-  const { id, MovieTitle } = req.params;
+app.delete('/users/:id/:movieTitle', (req, res) => {
+  const { id, movieTitle } = req.params;
   
   let user = users.find( user => user.id == id );
 
@@ -221,13 +220,13 @@ app.delete('/user/:id/:movieTitle', (req, res) => {
 })
 
 //DELETE
-app.delete('/user/:id', (req, res) => {
+app.delete('/users/:id', (req, res) => {
   const { id } = req.params;
   
   let user = users.find( user => user.id == id );
 
   if (user) {
-    user = users = user.filter( user => user.id != id);
+    users = users.filter( user => user.id != id);
     res.status(200).send(`User ${id} has been deleted`);
   } else {
     res.status(400).send('No such user')
@@ -235,14 +234,13 @@ app.delete('/user/:id', (req, res) => {
 
 })
 
-
 //READ endpoint
-app.get('/movies', (rep, res) => {
+app.get('/movies', (req, res) => {
   res.status(200).json(movies);
 })
 
 //READ endpoint
-app.get('/movies/:title', (rep, res) => {
+app.get('/movies/:title', (req, res) => {
   const { title } = req.params;
   const movie = movies.find( movie => movie.Title === title);
 
@@ -255,7 +253,7 @@ app.get('/movies/:title', (rep, res) => {
 })
 
 //READ endpoint
-app.get('/movies/genre/:genreName', (rep, res) => {
+app.get('/movies/genre/:genreName', (req, res) => {
   const { genreName } = req.params;
   const genre = movies.find( movie => movie.Genre.Name === genreName).Genre;
 
@@ -268,7 +266,7 @@ app.get('/movies/genre/:genreName', (rep, res) => {
 })
 
 //READ endpoint
-app.get('/movies/director/:directorName', (rep, res) => {
+app.get('/movies/director/:directorName', (req, res) => {
   const { directorName } = req.params;
   const director = movies.find( movie => movie.Director.Name === directorName).Director;
 
