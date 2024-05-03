@@ -6,7 +6,7 @@ const express = require('express'),
   Models = require('./models.js'),
   uuid = require('uuid');
 
-const Moviers = Models.Movie;
+const Movies = Models.Movie;
 const Users = Models.User;
 
 // BodyParser
@@ -208,6 +208,18 @@ app.get('/users', async (req, res) => {
   });
 });
 
+// GET all movies
+app.get('/movies', async (req, res) => {
+  await Movies.find()
+  .then((movies) => {
+    res.status(201).json(movies);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
 // GET a user by username
 app.get('/users/:username', async (req, res) => {
   await Users.findOne({ Username: req.params.Username })
@@ -240,10 +252,61 @@ app.put('/users/:Username', async (req, res) => {
   })
 });
 
+// GET a movie by title
+app.get('/movies/:title', async (req, res) => {
+  await Movies.findOne({ Title: req.params.Title })
+  .then((movie) => {
+    res.json(movie);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
+// GET a movie by genre
+app.get('/movies/:Genre/:Description', async (req, res) => {
+  await Movies.findOne({ Genre: req.params.Title })
+  .then((movie) => {
+    res.json(movie);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
+// GET a movie by director
+app.get('/movies/:Director', async (req, res) => {
+  await Movies.findOne({ Director: req.params.Title })
+  .then((movie) => {
+    res.json(movie);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
 // Add a movie to a user's list of favorites
 app.post('/users/:Username/movies/:MovieID', async (req, res) => {
   await Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params.MovieID }
+  },
+  { new: true })
+  .then((updatedUser) => {
+    res.json(updatedUser);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' +err)
+  });
+});
+
+// DELETE a movie from a user's list of favorites
+app.delete('/users/:Username/movies/:MovieID', async (req, res) => {
+  await Users.findOneAndRemove({ Username: req.params.Username }, {
+    $pull: { FavoriteMovies: req.params.MovieID }
   },
   { new: true })
   .then((updatedUser) => {
