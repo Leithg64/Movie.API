@@ -35,61 +35,100 @@
         <th>Method</th>
         <th>Endpoint</th>
         <th>Description</th>
+        <th>Sample Request</th>
+        <th>Sample Response</th>
       </tr>
       <tr>
         <td>GET</td>
         <td>/</td>
         <td>View my top 10 favorite movies</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>GET</td>
         <td>/documentation</td>
         <td>Returns static page</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>GET</td>
         <td>/movies</td>
         <td>Get all movies</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>POST</td>
         <td>/users</td>
         <td>Create a new user</td>
+        <td>
+          {
+            "Username": "exampleUser",
+            "Password": "examplePassword",
+            "Email": "user@example.com",
+            "Birthday": "1990-01-01"
+          }
+        </td>
+        <td>
+          {
+            "_id": "60d2cfef72d80b5f66e39871",
+            "Username": "exampleUser",
+            "Password": "examplePassword",
+            "Email": "user@example.com",
+            "Birthday": "1990-01-01"
+          }
+        </td>
       </tr>
       <tr>
         <td>PUT</td>
         <td>/users/:id</td>
         <td>Update user by ID</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>POST</td>
         <td>/users/:id/:movieTitle</td>
         <td>Add a favorite movie for a user</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>DELETE</td>
         <td>/users/:id/:movieTitle</td>
         <td>Remove a favorite movie for a user</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>DELETE</td>
         <td>/users/:id</td>
         <td>Delete user by ID</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>GET</td>
         <td>/movies/:title</td>
         <td>Get movie by title</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>GET</td>
         <td>/movies/genre/:genreName</td>
         <td>Get movies by genre</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
         <td>GET</td>
         <td>/movies/director/:directorName</td>
         <td>Get movies by director</td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
     </table>
     
