@@ -1,5 +1,6 @@
 const express = require('express'),
   morgan = require('morgan'),
+  bodyParser = require('body-parser'),
   app = express(),
   mongoose = require('mongoose'),
   Models = require('./models.js'),
@@ -8,11 +9,8 @@ const express = require('express'),
 const Moviers = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true });
-
 // BodyParser
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 let users = [
   {
