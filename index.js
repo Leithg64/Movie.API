@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true}));
 const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
 
-app.use('cors');
 app.use(cors());
 
 // requires passport
@@ -372,7 +371,10 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 
 
 // listen for requests
-app.listen(8080, () => console.log('Your app is listening on port 8080.'))
+const port = process.env.PORT || 8080;
+app.listen(port, '0.0.0.0',() => {
+  console.log('Listening on Port ' + port);
+});
 
 
 
