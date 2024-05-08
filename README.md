@@ -1,10 +1,9 @@
-Movie API
-
+MOVIE API
 Welcome to the Movie API project! The objective of this project is to build the server-side component of a “movies” web application. 
 The web application will provide users with access to information about different movies, directors, and genres. 
 Users can sign up, update their personal information, and create a list of their favorite movies.
 
-Getting Started
+GETTING STARTED:
 To get started with using this API, follow these simple steps:
 
 Clone the repository to your local machine:
@@ -19,7 +18,7 @@ npm install
 Start the server:
 npm start
 
-Endpoints:
+ENDPOINTS:
 This API exposes the following endpoints:
 
 /movies: Get a list of all movies.
@@ -31,5 +30,5 @@ This API exposes the following endpoints:
 Authentication
 This API currently does not require authentication. However, if you plan to deploy it in a production environment, it's recommended to implement authentication mechanisms to secure your endpoints.
 
-Contact
+CONTACT:
 If you have any questions or need further assistance, feel free to contact me at leithgwrk22@gmail.com.
