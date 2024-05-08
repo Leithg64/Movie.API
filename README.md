@@ -31,9 +31,5 @@ This API exposes the following endpoints:
 Authentication
 This API currently does not require authentication. However, if you plan to deploy it in a production environment, it's recommended to implement authentication mechanisms to secure your endpoints.
 
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 Contact
 If you have any questions or need further assistance, feel free to contact me at leithgwrk22@gmail.com.
