@@ -13,7 +13,7 @@ const Users = Models.User;
 const { check, validationResult } = require('express-validator');
 
 //mongoose.connect('mongodb://localhost:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI='mongodb+srv://leithgwrk22:oeh1sLYOij2bX31w@cluster0.wnzaud0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 
@@ -231,18 +231,6 @@ app.get('/users', passport.authenticate('jwt', { session: false }), async (req, 
   await Users.find()
   .then((users) => {
     res.status(201).json(users);
-  })
-  .catch((err) => {
-    console.error(err);
-    res.status(500).send('Error: ' + err);
-  });
-});
-
-// GET all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.find()
-  .then((movies) => {
-    res.status(201).json(movies);
   })
   .catch((err) => {
     console.error(err);
