@@ -8,15 +8,15 @@ Getting Started
 To get started with using this API, follow these simple steps:
 
 Clone the repository to your local machine:
-bash
 git clone https://github.com/Leithg64/movie.api.git
+
 Navigate to the project directory:
-bash
 cd movie.api
+
 Install dependencies:
 npm install
+
 Start the server:
-sql
 npm start
 
 Endpoints:
