@@ -13,7 +13,7 @@ const Users = Models.User;
 const { check, validationResult } = require('express-validator');
 
 //mongoose.connect('mongodb://localhost:27017/cfDB', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI='mongodb+srv://leithgwrk22:oeh1sLYOij2bX31w@cluster0.wnzaud0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTION_URI='', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', async (req, res) => {
   res.send("APP loaded :)")
