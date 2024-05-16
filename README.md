@@ -3,21 +3,6 @@ Welcome to the Movie API project! The objective of this project is to build the 
 The web application will provide users with access to information about different movies, directors, and genres. 
 Users can sign up, update their personal information, and create a list of their favorite movies.
 
-GETTING STARTED:
-To get started with using this API, follow these simple steps:
-
-Clone the repository to your local machine:
-git clone https://github.com/Leithg64/movie.api.git
-
-Navigate to the project directory:
-cd movie.api
-
-Install dependencies:
-npm install
-
-Start the server:
-npm start
-
 ENDPOINTS:
 This API exposes the following endpoints:
 
