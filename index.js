@@ -12,8 +12,8 @@ const Users = Models.User;
 
 const { check, validationResult } = require('express-validator');
 
-//mongoose.connect('mongodb+srv://leithg15:5ReY0BIpzHtuVIAq@myflixparttwo.so840qc.mongodb.net/myflixparttwo?retryWrites=true&w=majority&appName=myflixparttwo', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://leithg15:5ReY0BIpzHtuVIAq@myflixparttwo.so840qc.mongodb.net/myflixparttwo?retryWrites=true&w=majority&appName=myflixparttwo', { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', async (req, res) => {
   res.send("APP loaded :)")
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 
 // Cross Origin Resource Sharing
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080','', ''];
+let allowedOrigins = ['http://localhost:8080','http://localhost:1234'];
 
 app.use(cors());
 
