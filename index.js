@@ -137,6 +137,72 @@ res.status(500).send('Error: ' + error);
 }
 });
 
+// GET a movie by title
+app.get('/movies/:title', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Movies.findOne({ Title: req.params.Title })
+  .then((movie) => {
+    res.json(movie);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
+// GET a movie by genre
+app.get('/movies/:Genre/:Description', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Movies.findOne({ Genre: req.params.Title })
+  .then((movie) => {
+    res.json(movie);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
+// GET a movie by director
+app.get('/movies/:Director', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Movies.findOne({ Director: req.params.Title })
+  .then((movie) => {
+    res.json(movie);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
+});
+
+// Add a movie to a user's list of favorites
+app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndUpdate({ Username: req.params.Username }, {
+    $push: { FavoriteMovies: req.params.MovieID }
+  },
+  { new: true })
+  .then((updatedUser) => {
+    res.json(updatedUser);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' +err)
+  });
+});
+
+// DELETE a movie from a user's list of favorites
+app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  await Users.findOneAndRemove({ Username: req.params.Username }, {
+    $pull: { FavoriteMovies: req.params.MovieID }
+  },
+  { new: true })
+  .then((updatedUser) => {
+    res.json(updatedUser);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' +err)
+  });
+});
+
 // Delete a user by username
 app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), async (req, res) => {
   if (req.user.Username !== req.params.Username) {
@@ -151,10 +217,10 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
   res.status(200).send(req.params.Username + ' was deleted');
   })
   .catch((err) => res.status(500).send('Error: ' + err));
-  });
+});
 
 
-  const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
   app.listen(port, '0.0.0.0', () => {
   console.log('Listening on Port ' + port);
   });
