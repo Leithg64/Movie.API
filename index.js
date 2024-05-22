@@ -12,7 +12,7 @@ const Users = Models.User;
 
 const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb+srv://leithg15:5ReY0BIpzHtuVIAq@myflixparttwo.so840qc.mongodb.net/myflixparttwo?retryWrites=true&w=majority&appName=myflixparttwo', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://leithg15:5ReY0BIpzHtuVIAq@myflixparttwo.so840qc.mongodb.net/myFlixDB?retryWrites=true&w=majority&appName=myflixparttwo', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', async (req, res) => {
 res.send("APP loaded :)")
@@ -150,6 +150,7 @@ res.status(500).send('Error: ' + error);
 app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
   try {
     const movies = await Movies.find();
+    console.log("movies", movies);
     res.status(200).json(movies);
   } catch (error) {
     console.error(error);
