@@ -65,6 +65,7 @@ check('Email', 'Email does not appear to be valid').isEmail()
 ],
 async (req, res) => {
 let errors = validationResult(req);
+console.log("request", req);
 
 if (!errors.isEmpty()) {
   return res.status(422).json({ errors: errors.array() });
@@ -79,7 +80,7 @@ try {
     const newUser = await Users.create({
       Username: req.body.Username,
       Password: hashedPassword,
-      Email: [req.body.Email]("http://req.body.Email"),
+      Email: req.body.Email,
       Birthday: req.body.Birthday
     });
     return res.status(201).json(newUser);
