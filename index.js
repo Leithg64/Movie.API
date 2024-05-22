@@ -12,7 +12,7 @@ const Users = Models.User;
 
 const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb+srv://leithg15:5ReY0BIpzHtuVIAq@myflixparttwo.so840qc.mongodb.net/myFlixDB?retryWrites=true&w=majority&appName=myflixparttwo', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://leithg15:5ReY0BIpzHtuVIAq@myflixparttwo.so840qc.mongodb.net/myflixparttwo?retryWrites=true&w=majority&appName=myflixparttwo', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/', async (req, res) => {
 res.send("APP loaded :)")
