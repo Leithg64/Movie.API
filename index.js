@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Cross Origin Resource Sharing
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://seaflix.netlify.app'];
 
 app.use(cors({
   origin: (origin, callback) => {
