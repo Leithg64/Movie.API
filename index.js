@@ -19,6 +19,8 @@ app.get('/', async (req, res) => {
 res.send("APP loaded :)")
 });
 
+
+
 // BodyParser
 app.use(bodyParser.json());
 
@@ -30,11 +32,12 @@ let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https:/
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) { 
+      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+      return callback(new Error(message), false);
     }
+    return callback(null, true);
   }
 }));
 
